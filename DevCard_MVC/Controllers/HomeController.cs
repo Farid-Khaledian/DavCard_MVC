@@ -18,17 +18,42 @@ namespace DevCard_MVC.Controllers
 			return View();
 		}
 
-		public IActionResult Contact()
+		[HttpGet]
+		public IActionResult Contact()//get data of page
 		{
 
-			return View();
+			var model = new Contact();
+			return View(model);
 		}
 
-		
+
+		//[HttpPost]
+		//public JsonResult Contact(IFormCollection form) //Send data to page
+		//{
+
+
+		//	var name=form["name"];
+		//return Json(Ok()  );
+
+		//}
+
+		[HttpPost]
+		public JsonResult Contact(Contact form)
+		{
+	
+			return Json( Ok() );
+
+
+		}
+
+
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
-	}
+
+
+
+    }
 }
